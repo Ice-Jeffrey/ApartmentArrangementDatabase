@@ -64,6 +64,7 @@ router.post("/", function (req, res, next) {
                 where
                     sno = ?
             `;
+            console.log(req.body)
             let param_list = [
                 req.body.sname,
                 req.body.sex,
@@ -71,9 +72,9 @@ router.post("/", function (req, res, next) {
                 req.body.major,
                 req.body.classnum,
                 req.body.phonenumber,
-                req.body.sno,
                 req.body.department,
-                req.body.grade
+                parseInt(req.body.grade),
+                parseInt(req.body.sno)
             ];
             connect.query(sql, param_list, function (err, result, fileds) {
                 if (err) {
